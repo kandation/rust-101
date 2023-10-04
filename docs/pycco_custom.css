@@ -10,17 +10,25 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'sarabun';
+    src: url('Sarabun-Light.ttf') format('truetype');
+   
+    font-weight: normal;
+    font-style: normal;
+}
+
 /*--------------------- Layout ----------------------------*/
 body {
-    font-family: 'aller-light', sans-serif;
+    font-family: 'sarabun';
     position: relative;
     display: inline-block;
     min-height: 100%;
     min-width: 100%;
-}
+}d
 
 h1, h2, h3, h4, h5, h6 {
-    line-height: 1.1em;
+    line-height: 1.2em;
 }
 
 div.docs {

@@ -1,46 +1,43 @@
-// Welcome to Rust-101
+// ขอต้อนรับสู่ Rust-101
 // ===================
 // 
-// This is [Rust-101](https://www.ralfj.de/projects/rust-101/), a small tutorial for
-// the [Rust language](https://www.rust-lang.org/). It is intended to be an interactive,
-// hands-on course: I believe the only way to *really* learn a language is to write code
-// in it, so you should be coding during the course.
+// นี่คือ [Rust-101](https://www.ralfj.de/projects/rust-101/), บทช่วยสอนขนาดเล็กสำหรับ
+// [ภาษารัสต์](https://www.rust-lang.org/). มันถูกออกแบบมาให้เป็นหลักสูตรแบบโต้ตอบ,
+// และปฏิบัติจริง: ฉันเชื่อว่าวิธีเดียวที่จะเรียนรู้ภาษาได้อย่าง *แท้จริง* คือการเขียนโค้ดในนั้น
+// ดังนั้นคุณควรเขียนโค้ดระหว่างการเรียนรู้.
 // 
-// If you have any questions that are not answered here, check out the "Additional Resources"
-// below. In particular, the IRC channel is filled with awesome people willing to help you! I spent
-// lots of time there ;-)
+// หากคุณมีคำถามที่ไม่ได้รับคำตอบที่นี่ โปรดดูที่ "แหล่งข้อมูลเพิ่มเติม" ด้านล่าง
+// โดยเฉพาะอย่างยิ่ง แชนเนล IRC เต็มไปด้วยคนเก่งๆ ที่เต็มใจช่วยเหลือคุณ! 
+// ฉันใช้เวลาอยู่ที่นั่นบ่อยมากเลยนะ ;-)
 // 
-// I will assume some familiarity with programming, and hence not explain the basic
-// concepts common to most languages. Instead, I will focus on what makes Rust special.
+// ฉันจะถือว่าคุณมีความคุ้นเคยกับการเขียนโปรแกรมในระดับหนึ่งแล้ว และจะไม่อธิบายแนวคิดพื้นฐาน
+// ที่พบได้ทั่วไปในภาษาส่วนใหญ่ แต่จะมุ่งเน้นไปที่สิ่งที่ทำให้ Rust พิเศษแทน.
 //
-// Why Rust?
+// ทำไมต้อง Rust?
 // ---------
 // 
-// When you got here, I am kind of assuming that you already decided to give Rust at
-// least a look, so that I don't have to do much convincing here. But just in
-// case, here's why I think Rust is worth learning:<br/>
-// At this time, Rust is a language with a pretty unique set of goals. Rust aims to
-// achieve C++-style control over memory and execution behavior (like, static vs. dynamic
-// dispatch), which makes it possible to construct abstractions that carry no run-time
-// cost. This is combined with the comfort of high-level functional languages and guaranteed
-// safety (as in, the program will not crash in uncontrolled ways). The vast majority of existing
-// languages sacrifices control for safety (for example, by enforcing the usage of
-// a garbage collector) or vice versa. Rust can run without dynamic allocation (i.e., without
-// a heap), and even without an operating system. In fact, Rust rules out more classes of bugs
-// than languages that achieve safety with a garbage collector: Besides dangling pointers and
-// double-free, Rust also prevents issues such as iterator invalidation and data races. Finally,
-// it cleans up behind you, and deallocates resources (memory, but also file descriptors and really
-// anything) when you don't need them anymore.
+// ตอนนี้ฉันขอสมมติว่าคุณได้ตัดสินใจที่จะลองเรียน Rust แล้ว ดังนั้นฉันไม่ต้องโน้มน้าวคุณมากนัก 
+// แต่ในกรณีที่คุณยังไม่แน่ใจ ฉันจะมาเล่าให้ฟังว่าทำไมฉันคิดว่า Rust คุ้มค่าแก่การเรียนรู้:<br/>
+// Rust เป็นภาษาที่มีเป้าหมายเฉพาะตัวมาก ณ เวลานี้ Rust มุ่งหวังที่จะให้การควบคุมหน่วยความจำ
+// และพฤติกรรมการทำงานในระดับเดียวกันกับ C++  (เช่นการส่งข้อมูลไปมา (dispatch) ทั้งแบบคงที่และแบบไดนามิก)
+// ซึ่งทำให้สามารถสร้าง abstractions ที่ไม่มีต้นทุนรันไทม์ได้ นอกจากนี้ 
+// Rust ยังมีข้อดีของภาษาฟังก์ชันระดับสูงและความปลอดภัยที่รับประกันได้ (เช่น โปรแกรมจะไม่ล่มในลักษณะที่ควบคุมไม่ได้)
+// ภาษาส่วนใหญ่ที่ใช้กันอยู่ในปัจจุบันจะต้องแลกเปลี่ยนการควบคุมกับความปลอดภัย (เช่น โดยบังคับใช้การใช้ garbage
+//  collector) หรือ ในทางกลับกัน Rust สามารถทำงานได้โดยไม่ต้องมีการจัดสรรแบบไดนามิก
+// (กล่าวคือ ไม่มี heap) และแม้กระทั่งไม่ต้องมีระบบปฏิบัติการ.
+// Rust ยังสามารถป้องกันข้อผิดพลาดได้มากขึ้นกว่าภาษาที่ใช้ garbage collector  เพื่อความปลอดภัย นอกเหนือ
+// จาก dangling pointers และ double-free แล้ว Rust ยังป้องกันปัญหาต่างๆ เช่น iterator invalidation
+// และ data races สุดท้าย Rust จะทำความสะอาดให้คุณ และคืนทรัพยากร (หน่วยความจำ แต่ยังรวมถึง 
+// file descriptors และอื่นๆ) เมื่อคุณไม่ต้องการใช้มันอีกต่อไป
 // 
 // 
-// Getting started
+// เริ่มต้นกันเลย!
 // ---------------
 // 
-// You will need to have Rust installed, of course. It is available for download on
-// [the Rust website](https://www.rust-lang.org/). Make sure you get at least version 1.3.
-// More detailed installation instructions are provided in
-// [The Book](https://doc.rust-lang.org/stable/book/).
-// This will also install `cargo`, the tool responsible for building rust projects (or *crates*).
+// ก่อนอื่น คุณต้องติดตั้ง Rust ซึ่งสามารถดาวน์โหลดได้จาก [เว็บไซต์ Rust](https://www.rust-lang.org/).
+// ตรวจสอบให้แน่ใจว่าคุณติดตั้งเวอร์ชัน 1.3 หรือสูงกว่า คำแนะนำในการติดตั้งโดยละเอียดมีอยู่ใน
+// [หนังสือเล่มนี้](https://doc.rust-lang.org/stable/book/).
+// Rust จะติดตั้ง `cargo` มาด้วย ซึ่งเป็นเครื่องมือที่ใช้สำหรับสร้างและจัดการโปรเจกต์ (หรือ *crates*).
 // 
 // Next, we have to prepare a workspace for you to conduct your Rust-101 work in, so that you don't
 // have to start with an empty file. The easiest way is to
