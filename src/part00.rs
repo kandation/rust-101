@@ -1,21 +1,20 @@
-// Rust-101, Part 00: Algebraic datatypes
+// Rust-101, ส่วน 00: ประเภทตัวเลขผสม
 // ======================================
 
-// As our first piece of Rust code, we want to write a function that computes the
-// minimum of a list.
+// โค๊ตชิ้นแรกของเรา, เราจะมาเขียนฟังก์ชันที่คำนวณหาค่าต่ำสุดของรายการ
 
-//@ ## Getting started
-//@ Let us start by thinking about the *type* of our function. Rust forces us to give the types of
-//@ all arguments, and the return type, before we even start writing the body. In the case of our
-//@ minimum function, we may be inclined to say that it returns a number. But then we would be in
-//@ trouble: What's the minimum of an empty list? The type of the function says we have to return
-//@ *something*. We could just choose 0, but that would be kind of arbitrary. What we need
-//@ is a type that is "a number, or nothing". Such a type (of multiple exclusive options)
-//@ is called an "algebraic datatype", and Rust lets us define such types with the keyword `enum`.
-//@ Coming from C(++), you can think of such a type as a `union`, together with a field that
-//@ stores the variant of the union that's currently used.
+//@ ## มาเริ่มกันเถอะ!
+//@มาเริ่มต้นด้วยการคิดเกี่ยวกับ *type* ของฟังก์ชันของเราก่อน. Rust กำหนดให้เราต้องระบุประเภทของอาร์กิวเมนต์ทั้งหมด 
+//@ และ*type*ของค่าที่ส่งคืน, ก่อนที่เราจะเริ่มเขียนเนื้อหาได้ ในกรณีของฟังก์ชันค่าต่ำสุดของเรา
+//@ ตอนนี้ เราอาจจะคิดว่าฟังก์ชันนี้ส่งคืนเป็นตัวเลข. แต่เราก็พบกับปัญหาบางอย่าง:
+//@ แล้วอะไรคือค่าต่ำสุดของลิสต์ว่างกันล่ะ? ในการประกาศ type ของฟังก์ชั่นบอกเราว่า เราควรคืนค่า
+//@ *บางสิ่ง* ออกไป. โดยทั่วไปเราก็จะคืนค่าเป็น 0, แต่มันช่างไร้เหตุผลเลยจริงไหม.
+//@ เราต้องการ *type* ที่เป็นทั้ง "ตัวเลข หรือ ไม่มีอะไรเลย". Type ดังกล่าวเรียกว่า "ประเภทตัวเลขลูกผสม (algebraic datatype)" 
+//@ หรือก็คือ ตัวเลือกหลายรายการ, และในรัสต์จะนิยามประเภทดังกล่าวด้วยคีย์เวิร์ด `enum`.
+//@ สำหรับคนที่คุ้นเคยกับ C++ คุณสามารถคิดว่าประเภทดังกล่าวเป็น `union` พร้อมกับฟิลด์ที่เก็บตัวแปรของ union ที่กำลังใช้งานในปัจจุบัน.
 
-// An `enum` for "a number or nothing" could look as follows:
+
+// และ `enum` สำหรับ "ตัวเลข หรือ ไม่มีอะไรเลย" เขียนได้ดังนี้:
 enum NumberOrNothing {
     Number(i32),
     Nothing
